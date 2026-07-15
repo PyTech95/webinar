@@ -20,10 +20,15 @@ export default function Speaker() {
         <div className="relative mx-auto lg:mx-0 w-full max-w-md">
           <div className="relative rounded-2xl overflow-hidden border border-white/10 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.7)]">
             <img
-              src="https://customer-assets.emergentagent.com/job_logos-11/artifacts/oimw09re_image.png"
+              src={`${process.env.PUBLIC_URL || ""}/kent.jpg`}
               alt="Kent Oliver Bhupathi"
               className="w-full h-auto block"
               loading="lazy"
+              onError={(e) => {
+                e.currentTarget.onerror = null;
+                e.currentTarget.src =
+                  "https://customer-assets.emergentagent.com/job_logos-11/artifacts/oimw09re_image.png";
+              }}
             />
             <div className="absolute inset-x-0 bottom-0 p-5 bg-gradient-to-t from-black/85 via-black/40 to-transparent">
               <div className="flex items-end justify-between">

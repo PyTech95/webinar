@@ -202,6 +202,24 @@ backend:
         comment: "✅ List registrations endpoint working correctly. Returns array of registrations including test registration (priya.test1@example.com)"
 
 frontend:
+  - task: "Kent Bhupathi photo rendering in Speaker section"
+    implemented: true
+    working: true
+    file: "/app/frontend/src/components/Speaker.jsx"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: "NA"
+        agent: "user"
+        comment: "User reported Kent Bhupathi photo not showing in Speaker section on landing page"
+      - working: true
+        agent: "main"
+        comment: "Replaced heavy 9.9MB source image with locally-hosted optimized version at /kent.jpg (approx 140KB)"
+      - working: true
+        agent: "testing"
+        comment: "✅ Bug fix verified successfully. Kent photo loads correctly on both desktop (1920x1080) and mobile (390x844) viewports. Image properties: complete=true, naturalWidth=900, naturalHeight=1200, currentSrc=https://ai-bootcamp-30.preview.emergentagent.com/kent.jpg. No console errors. Screenshots captured: .screenshots/kent-photo-desktop.png and .screenshots/kent-photo-mobile.png showing Kent in blue suit in the #speaker section."
+
   - task: "Frontend UI - Not tested"
     implemented: true
     working: "NA"
@@ -217,12 +235,12 @@ frontend:
 metadata:
   created_by: "testing_agent"
   version: "1.0"
-  test_sequence: 1
-  run_ui: false
+  test_sequence: 2
+  run_ui: true
 
 test_plan:
   current_focus:
-    - "All backend API endpoints tested and working"
+    - "Kent Bhupathi photo bug fix verified and working"
   stuck_tasks: []
   test_all: false
   test_priority: "high_first"
@@ -230,3 +248,5 @@ test_plan:
 agent_communication:
   - agent: "testing"
     message: "Backend testing completed successfully. All 8 API tests passed: health check, valid registration, duplicate email handling (soft update), validation for consent/email/required fields, count endpoint, and list registrations endpoint. Backend is fully functional and ready for production."
+  - agent: "testing"
+    message: "Kent Bhupathi photo bug fix verified successfully. The optimized kent.jpg (138KB) is loading correctly on both desktop and mobile viewports. Image renders with proper dimensions (900x1200), no console errors, and uses the local optimized file (not fallback). Screenshots captured as evidence. Bug fix complete."
