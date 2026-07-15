@@ -220,6 +220,126 @@ frontend:
         agent: "testing"
         comment: "✅ Bug fix verified successfully. Kent photo loads correctly on both desktop (1920x1080) and mobile (390x844) viewports. Image properties: complete=true, naturalWidth=900, naturalHeight=1200, currentSrc=https://ai-bootcamp-30.preview.emergentagent.com/kent.jpg. No console errors. Screenshots captured: .screenshots/kent-photo-desktop.png and .screenshots/kent-photo-mobile.png showing Kent in blue suit in the #speaker section."
 
+  - task: "Exit-intent modal - Initial visibility"
+    implemented: true
+    working: true
+    file: "/app/frontend/src/components/ExitIntentModal.jsx"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: true
+        agent: "testing"
+        comment: "✅ Modal is NOT visible on first page load as expected"
+
+  - task: "Exit-intent modal - Mouseleave trigger"
+    implemented: true
+    working: true
+    file: "/app/frontend/src/components/ExitIntentModal.jsx"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: true
+        agent: "testing"
+        comment: "✅ Modal appears correctly when mouse leaves viewport (clientY <= 0). Tested with mouseleave event dispatch with clientY=-5"
+
+  - task: "Exit-intent modal - Idle timer trigger"
+    implemented: true
+    working: true
+    file: "/app/frontend/src/components/ExitIntentModal.jsx"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: true
+        agent: "testing"
+        comment: "✅ Modal appears after 35-second idle timer as expected. Fallback trigger working correctly"
+
+  - task: "Exit-intent modal - Content verification"
+    implemented: true
+    working: true
+    file: "/app/frontend/src/components/ExitIntentModal.jsx"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: true
+        agent: "testing"
+        comment: "✅ All modal content verified: 'WAIT — ONE MOMENT' pill, 'Don't Leave AI' heading (serif), 'to chance.' italic text, body text about saving 5+ hours, 'Reserve My Seat' button with arrow, 'No thanks' link, and X close button"
+
+  - task: "Exit-intent modal - Reserve My Seat interaction"
+    implemented: true
+    working: true
+    file: "/app/frontend/src/components/ExitIntentModal.jsx"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: true
+        agent: "testing"
+        comment: "✅ 'Reserve My Seat' button closes modal and smooth-scrolls to #register section. Verified scroll from 0px to 4222px (register section position: 4221.98px)"
+
+  - task: "Exit-intent modal - X button interaction"
+    implemented: true
+    working: true
+    file: "/app/frontend/src/components/ExitIntentModal.jsx"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: true
+        agent: "testing"
+        comment: "✅ X button (aria-label='Close popup') closes modal correctly"
+
+  - task: "Exit-intent modal - No thanks link interaction"
+    implemented: true
+    working: true
+    file: "/app/frontend/src/components/ExitIntentModal.jsx"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: true
+        agent: "testing"
+        comment: "✅ 'No thanks, I'll figure AI out on my own.' link closes modal correctly"
+
+  - task: "Exit-intent modal - Backdrop click interaction"
+    implemented: true
+    working: true
+    file: "/app/frontend/src/components/ExitIntentModal.jsx"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: true
+        agent: "testing"
+        comment: "✅ Clicking backdrop (outside modal) closes modal correctly"
+
+  - task: "Exit-intent modal - Escape key interaction"
+    implemented: true
+    working: true
+    file: "/app/frontend/src/components/ExitIntentModal.jsx"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: true
+        agent: "testing"
+        comment: "✅ Pressing Escape key closes modal correctly"
+
+  - task: "Exit-intent modal - Show-once-per-session behavior"
+    implemented: true
+    working: true
+    file: "/app/frontend/src/components/ExitIntentModal.jsx"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: true
+        agent: "testing"
+        comment: "✅ Show-once-per-session working correctly. Modal appears on first trigger, sets sessionStorage key 'epsilon_exit_modal_seen_v1'='1', and does NOT appear on subsequent triggers or after page reload in same session"
+
   - task: "Frontend UI - Not tested"
     implemented: true
     working: "NA"
@@ -235,12 +355,12 @@ frontend:
 metadata:
   created_by: "testing_agent"
   version: "1.0"
-  test_sequence: 2
+  test_sequence: 3
   run_ui: true
 
 test_plan:
   current_focus:
-    - "Kent Bhupathi photo bug fix verified and working"
+    - "Exit-intent modal fully tested and working"
   stuck_tasks: []
   test_all: false
   test_priority: "high_first"
@@ -250,3 +370,5 @@ agent_communication:
     message: "Backend testing completed successfully. All 8 API tests passed: health check, valid registration, duplicate email handling (soft update), validation for consent/email/required fields, count endpoint, and list registrations endpoint. Backend is fully functional and ready for production."
   - agent: "testing"
     message: "Kent Bhupathi photo bug fix verified successfully. The optimized kent.jpg (138KB) is loading correctly on both desktop and mobile viewports. Image renders with proper dimensions (900x1200), no console errors, and uses the local optimized file (not fallback). Screenshots captured as evidence. Bug fix complete."
+  - agent: "testing"
+    message: "Exit-intent modal testing completed successfully. All 10 test scenarios passed: (1) Modal NOT visible on initial load ✅ (2a) Exit-intent mouseleave trigger (clientY <= 0) ✅ (2b) 35-second idle timer fallback ✅ (3) All content elements verified (pill, heading, body, buttons) ✅ (4a) Reserve My Seat closes modal and scrolls to #register ✅ (4b) X button closes modal ✅ (4c) No thanks link closes modal ✅ (4d) Backdrop click closes modal ✅ (4e) Escape key closes modal ✅ (5) Show-once-per-session behavior with sessionStorage persistence ✅. Modal implementation is production-ready."

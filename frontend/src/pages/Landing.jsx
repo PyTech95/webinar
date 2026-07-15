@@ -8,6 +8,7 @@ import Programme from "../components/Programme";
 import Register from "../components/Register";
 import FAQ from "../components/FAQ";
 import Footer from "../components/Footer";
+import ExitIntentModal from "../components/ExitIntentModal";
 
 export default function Landing() {
   return (
@@ -21,6 +22,7 @@ export default function Landing() {
       <Register />
       <FAQ />
       <Footer />
+      <ExitIntentModal />
     </main>
   );
 }
