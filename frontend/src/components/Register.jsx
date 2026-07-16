@@ -163,7 +163,7 @@ export default function Register() {
             <h3 className="mt-6 font-serif-sc text-white text-[28px]">You're In.</h3>
             <p className="mt-3 text-slate-300 text-[14.5px] max-w-md mx-auto">
               Your seat is reserved for the Applied AI Masterclass on{" "}
-              <span className="text-white">August 3, 2026 · 12:00 PM IST</span>.
+              <span className="text-white">August 2, 2026 · 12:00 PM IST</span>.
               We'll send the joining link to your email and WhatsApp.
             </p>
             <button

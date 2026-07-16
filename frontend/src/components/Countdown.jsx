@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
-// Target: August 3, 2026 12:00 PM IST (UTC+5:30) => 06:30 UTC
-const TARGET_DATE = new Date(Date.UTC(2026, 7, 3, 6, 30, 0)).getTime();
+// Target: August 2, 2026 12:00 PM IST (UTC+5:30) => 06:30 UTC
+const TARGET_DATE = new Date(Date.UTC(2026, 7, 2, 6, 30, 0)).getTime();
 
 function pad(n) {
   return String(Math.max(0, n)).padStart(2, "0");

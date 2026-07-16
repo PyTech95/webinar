@@ -78,7 +78,7 @@ export default function Hero() {
                   <Calendar className="h-3.5 w-3.5" />
                   <span className="text-[10px] tracking-[0.22em] uppercase">Date</span>
                 </div>
-                <p className="mt-1.5 text-white text-[15px]">August 3, 2026</p>
+                <p className="mt-1.5 text-white text-[15px]">August 2, 2026</p>
               </div>
               <div>
                 <div className="flex items-center gap-2 text-slate-400">
