@@ -21,18 +21,30 @@ export default function Footer() {
             </div>
             <ul className="space-y-3 text-[13.5px] text-slate-300">
               <li className="flex items-center gap-3">
-                <Mail className="h-3.5 w-3.5 text-cyan-300" />
-                <a href="mailto:admissions@epsilonexec.com" className="hover:text-cyan-300 transition">
+                <Mail className="h-3.5 w-3.5 text-cyan-300 flex-shrink-0" />
+                <a
+                  href="mailto:admissions@epsilonexec.com?subject=Applied%20AI%20Masterclass%20Enquiry"
+                  className="hover:text-cyan-300 transition"
+                >
                   admissions@epsilonexec.com
                 </a>
               </li>
               <li className="flex items-center gap-3">
-                <MessageCircle className="h-3.5 w-3.5 text-cyan-300" />
-                <span>WhatsApp Us</span>
+                <MessageCircle className="h-3.5 w-3.5 text-cyan-300 flex-shrink-0" />
+                <a
+                  href="https://wa.me/918796339323?text=Hi%20Epsilon%2C%20I%27d%20like%20to%20know%20more%20about%20the%20Applied%20AI%20Masterclass."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-cyan-300 transition"
+                >
+                  WhatsApp Us
+                </a>
               </li>
               <li className="flex items-center gap-3">
-                <Phone className="h-3.5 w-3.5 text-cyan-300" />
-                <span>+91 87963 39323</span>
+                <Phone className="h-3.5 w-3.5 text-cyan-300 flex-shrink-0" />
+                <a href="tel:+918796339323" className="hover:text-cyan-300 transition">
+                  +91 87963 39323
+                </a>
               </li>
             </ul>
           </div>

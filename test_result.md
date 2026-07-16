@@ -352,15 +352,87 @@ frontend:
         agent: "testing"
         comment: "Frontend testing not performed as per instructions (backend testing only)"
 
+  - task: "Footer contact links - Email link"
+    implemented: true
+    working: true
+    file: "/app/frontend/src/components/Footer.jsx"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: true
+        agent: "testing"
+        comment: "✅ Email link verified. Tag: A, Text: 'admissions@epsilonexec.com', Href: 'mailto:admissions@epsilonexec.com?subject=Applied%20AI%20Masterclass%20Enquiry'. Link is correctly configured as anchor tag with proper mailto href."
+
+  - task: "Footer contact links - WhatsApp link"
+    implemented: true
+    working: true
+    file: "/app/frontend/src/components/Footer.jsx"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: true
+        agent: "testing"
+        comment: "✅ WhatsApp link verified. Tag: A, Text: 'WhatsApp Us', Href: 'https://wa.me/918796339323?text=...', Target: '_blank', Rel: 'noopener noreferrer'. All attributes correctly configured including security attributes (noopener)."
+
+  - task: "Footer contact links - Phone link"
+    implemented: true
+    working: true
+    file: "/app/frontend/src/components/Footer.jsx"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: true
+        agent: "testing"
+        comment: "✅ Phone link verified. Tag: A, Text: '+91 87963 39323', Href: 'tel:+918796339323'. Link is correctly configured as anchor tag with proper tel href."
+
+  - task: "Registration form - Reserve My Seat CTA scroll behavior"
+    implemented: true
+    working: true
+    file: "/app/frontend/src/components/Register.jsx"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: true
+        agent: "testing"
+        comment: "✅ 'Reserve My Seat' CTA button correctly scrolls to #register section. Verified smooth scroll from 0px to 4222px. Register section becomes visible after click."
+
+  - task: "Registration form - Form fill and submit (positive test)"
+    implemented: true
+    working: true
+    file: "/app/frontend/src/components/Register.jsx"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: true
+        agent: "testing"
+        comment: "✅ Registration form end-to-end test passed. Successfully filled all fields (Full Name: 'Test User QA', Email: unique timestamp-based, Phone: '+91 98765 12345', City: 'Bengaluru', Status: 'Working Professional', AI Familiarity: 'Intermediate', Reason: 'Productivity', Interest: 'Yes', Consent: checked). Form submitted successfully and replaced by success card showing 'You're In.' heading with 'August 3, 2026 · 12:00 PM IST' date/time. No error toast visible. Toast notification 'You're registered! Check your inbox and WhatsApp for the joining link.' appeared confirming successful registration. Note: Exit-intent modal appeared multiple times during form filling and was handled properly by closing with Escape key."
+
+  - task: "Registration form - Validation (negative test)"
+    implemented: true
+    working: true
+    file: "/app/frontend/src/components/Register.jsx"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: true
+        agent: "testing"
+        comment: "✅ Form validation working correctly. When submitting incomplete form (only Full Name filled), validation toast appeared with message 'Almost there - Please fill out all required fields.' Success state NOT shown (as expected). Form remains visible for user to complete. Validation prevents submission of incomplete data."
+
 metadata:
   created_by: "testing_agent"
   version: "1.0"
-  test_sequence: 3
+  test_sequence: 4
   run_ui: true
 
 test_plan:
   current_focus:
-    - "Exit-intent modal fully tested and working"
+    - "Footer contact links and registration form fully tested and working"
   stuck_tasks: []
   test_all: false
   test_priority: "high_first"
@@ -372,3 +444,5 @@ agent_communication:
     message: "Kent Bhupathi photo bug fix verified successfully. The optimized kent.jpg (138KB) is loading correctly on both desktop and mobile viewports. Image renders with proper dimensions (900x1200), no console errors, and uses the local optimized file (not fallback). Screenshots captured as evidence. Bug fix complete."
   - agent: "testing"
     message: "Exit-intent modal testing completed successfully. All 10 test scenarios passed: (1) Modal NOT visible on initial load ✅ (2a) Exit-intent mouseleave trigger (clientY <= 0) ✅ (2b) 35-second idle timer fallback ✅ (3) All content elements verified (pill, heading, body, buttons) ✅ (4a) Reserve My Seat closes modal and scrolls to #register ✅ (4b) X button closes modal ✅ (4c) No thanks link closes modal ✅ (4d) Backdrop click closes modal ✅ (4e) Escape key closes modal ✅ (5) Show-once-per-session behavior with sessionStorage persistence ✅. Modal implementation is production-ready."
+  - agent: "testing"
+    message: "Footer contact links and registration form testing completed successfully. All tests passed: (1) Footer - Email link (mailto:admissions@epsilonexec.com) ✅, WhatsApp link (https://wa.me/918796339323 with target='_blank' and rel='noopener noreferrer') ✅, Phone link (tel:+918796339323) ✅. All anchor tags have correct href attributes. (2) Registration form - 'Reserve My Seat' CTA scrolls to form ✅, Form fill and submit with all fields works correctly ✅, Success state shows 'You're In.' with 'August 3, 2026 · 12:00 PM IST' ✅, Validation prevents incomplete submission ✅. Note: Exit-intent modal appears frequently during form interaction but can be dismissed with Escape key. All functionality working as expected."
