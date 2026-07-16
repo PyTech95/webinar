@@ -114,7 +114,18 @@ export default function Register() {
         toast({ title: "Something went wrong", description: "Please try again." });
       }
     } catch (e2) {
-      const msg = e2?.response?.data?.detail || "Failed to register. Please try again.";
+      let msg = "Failed to register. Please try again.";
+      const detail = e2?.response?.data?.detail;
+      if (Array.isArray(detail) && detail.length) {
+        // Pydantic 422 validation errors
+        msg = detail
+          .map((d) => (d.loc ? `${d.loc.slice(-1)[0]}: ${d.msg}` : d.msg))
+          .join(" \u2022 ");
+      } else if (typeof detail === "string") {
+        msg = detail;
+      } else if (e2?.message) {
+        msg = e2.message;
+      }
       toast({ title: "Registration failed", description: String(msg) });
     } finally {
       setLoading(false);
@@ -249,9 +260,20 @@ export default function Register() {
               </div>
             </div>
 
-            <label className="mt-7 flex items-start gap-3 cursor-pointer group">
+            <div
+              onClick={() => update("agree", !form.agree)}
+              role="checkbox"
+              aria-checked={form.agree}
+              tabIndex={0}
+              onKeyDown={(e) => {
+                if (e.key === " " || e.key === "Enter") {
+                  e.preventDefault();
+                  update("agree", !form.agree);
+                }
+              }}
+              className="mt-7 flex items-start gap-3 cursor-pointer group select-none"
+            >
               <span
-                onClick={() => update("agree", !form.agree)}
                 className={`mt-0.5 h-4 w-4 rounded border-2 flex-shrink-0 flex items-center justify-center transition ${
                   form.agree ? "bg-cyan-300 border-cyan-300" : "border-slate-500 group-hover:border-cyan-400/50"
                 }`}
@@ -262,10 +284,10 @@ export default function Register() {
                   </svg>
                 )}
               </span>
-              <span className="text-[13px] text-slate-300 leading-relaxed" onClick={() => update("agree", !form.agree)}>
+              <span className="text-[13px] text-slate-300 leading-relaxed">
                 I agree to receive webinar details, reminders and relevant follow-up communication from Epsilon Executive Education.
               </span>
-            </label>
+            </div>
 
             <button
               type="submit"

@@ -12,6 +12,18 @@ export default function ExitIntentModal() {
     if (typeof window === "undefined") return;
     try {
       if (sessionStorage.getItem(SEEN_KEY) === "1") return;
+    } catch (_) {}
+    // Suppress if user is already looking at (or interacting with) the register form
+    const reg = document.querySelector("#register");
+    if (reg) {
+      const rect = reg.getBoundingClientRect();
+      const inView = rect.top < window.innerHeight * 0.85 && rect.bottom > 0;
+      if (inView) return;
+    }
+    // Suppress if any input/textarea/select inside the page is focused
+    const a = document.activeElement;
+    if (a && ["INPUT", "TEXTAREA", "SELECT"].includes(a.tagName)) return;
+    try {
       sessionStorage.setItem(SEEN_KEY, "1");
     } catch (_) {}
     setOpen(true);
